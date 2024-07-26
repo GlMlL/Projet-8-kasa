@@ -1,0 +1,26 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  nav {
+    ul {
+      display: flex;
+
+      a {
+        text-decoration: none;
+        &.underline {
+          text-decoration: underline;
+        }
+      }
+
+      li {
+        margin: 0 10px;
+        list-style: none;
+      }
+    }
+  }
+}
+
+
+

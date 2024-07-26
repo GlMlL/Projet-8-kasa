@@ -1,0 +1,32 @@
+.Annonce{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 25px;
+  .pics{
+    img{
+      width: 70%;
+      height: 30%;
+      object-fit: cover;
+    }
+  }
+  .pictures{
+    gap: 1.5rem;
+    img{
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 15px;
+
+    }
+}
+
+}
+.title{
+  color: rgba(255, 96, 96, 1);
+  font-family: Montserrat, sans-serif;
+  font-weight: 500;
+  font-size: 36px;
+}

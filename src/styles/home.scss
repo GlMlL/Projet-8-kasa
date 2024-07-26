@@ -1,0 +1,39 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5%;
+  .logement-fiche{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+  }
+  .Banner {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 50%;
+      display: block;
+      object-fit: cover;
+      border-radius: 10px;
+      filter: brightness(50%) contrast(120%);
+    }
+
+    h1 {
+      position: absolute;
+      top: 25%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      text-align: center;
+      margin: 0;
+      padding: 10px;
+      z-index: 1; 
+    }
+  }
+}

@@ -1,4 +1,5 @@
-import '../styles/header.sass';
+import '../styles/header.scss';
+import {NavLink} from 'react-router-dom';
 const Header = () => {
     return (
         <div className="header">
@@ -12,8 +13,13 @@ const Header = () => {
 
             <nav>
                 <ul>
-                    <li>Accueil</li>
-                    <li>À propos</li>
+                    <NavLink to="/" className={({isActive}) => (isActive ? "underline" : "" )}>
+                        <li>Accueil</li>
+                    </NavLink>
+                    <NavLink to="/about" className={({isActive}) => (isActive ? "underline" : "" )}>
+                        <li>À propos</li>
+                    </NavLink>
+
                 </ul>
             </nav>
         </div>

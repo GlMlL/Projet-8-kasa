@@ -1,12 +1,25 @@
 import React from 'react';
-import Header from './components/header.jsx'; // Assurez-vous d'importer correctement votre composant Header
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header.jsx';
+import Home from './components/Home';
+import About from './pages/About';
+import Annonce from "./components/Annonce";
+import Error from './components/Error';
+import {Footer} from "./components/Footer";
 
 function MyComponent() {
-  return (
-    <div>
-      <Header /> {/* Remplace <h1>My Component</h1> par votre Header */}
-    </div>
-  );
+    return (
+        <BrowserRouter>
+            <Header />
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/annonce/:id" element={<Annonce />} />
+                <Route path="*" element={<Error />} />
+            </Routes>
+            <Footer />
+        </BrowserRouter>
+    );
 }
 
 export default MyComponent;
