@@ -7,8 +7,12 @@ const findAnnonceId =(id) => {
     return annonces.find((annonce) => annonce.id === id);
 }
 const Annonce = () => {
+
     const{id} = useParams();
     const annonce = findAnnonceId(id);
+    console.log( annonce)
+
+
     const pictures = annonce.pictures;
     return (
         <div className="Annonce">

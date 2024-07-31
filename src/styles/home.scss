@@ -1,13 +1,11 @@
+body{
+  margin: 25px;
+}
 .Home {
   display: flex;
   flex-direction: column;
   margin-top: 5%;
-  .logement-fiche{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-  }
+
   .Banner {
     position: relative;
     width: 100%;

@@ -12,9 +12,12 @@ const Home = () => {
                 <img src={`${process.env.PUBLIC_URL}/images/Image_source_1.jpg`} alt=" falaise en bord de mer" />
                 <h1>Chez vous, et partout ailleurs</h1>
             </div>
-            <div className="logement-fiche">
-                <FicheLogement annonces={annonces} />
+            <div className="logement">
+                <div className="logement-list">
+                    <FicheLogement annonces={annonces}/>
+                </div>
             </div>
+
         </div>
     );
 };
