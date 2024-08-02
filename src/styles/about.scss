@@ -1,0 +1,27 @@
+.container {
+  min-height: calc(100vh - 210px - 50px - 20px);
+}
+
+.layout-about {
+  width: 65%;
+  margin: auto;
+}
+
+@media (max-width: 1024px) {
+  .layout-about {
+    width: 100%;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.layout_housing p{
+  display: flex;
+  justify-content:flex-start ;
+  list-style: none;
+  padding-top: 20px;
+}
+
+.layout_housing li {
+  list-style: none;
+}

@@ -1,10 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header.jsx';
-import Home from './components/Home';
+import Home from './pages/Home';
 import About from './pages/About';
 import Annonce from "./components/Annonce";
-import Error from './components/Error';
+import Error from './pages/Error';
 import {Footer} from "./components/Footer";
 
 function MyComponent() {

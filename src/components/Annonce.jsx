@@ -1,5 +1,5 @@
-import React from 'react';
-import{useParams}   from "react-router-dom";
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from "react-router-dom";
 import annonces from "../data/annonces.json";
 import '../styles/annonce.scss';
 
@@ -9,8 +9,20 @@ const findAnnonceId =(id) => {
 const Annonce = () => {
 
     const{id} = useParams();
+    const navigate = useNavigate();
     const annonce = findAnnonceId(id);
-    console.log( annonce)
+
+
+    useEffect(() => {
+        if (!annonce) {
+            navigate('/error');
+        }
+    }, [annonce, navigate]);
+
+    if (!annonce) {
+        return null;
+    }
+
 
 
     const pictures = annonce.pictures;

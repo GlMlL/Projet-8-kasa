@@ -1,0 +1,79 @@
+.collapse_container{
+  width: 100%;
+  margin-bottom: 25px;
+}
+
+.layout-collapse-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(255, 255, 255);
+  background: #FF6060;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 7px;
+  overflow: hidden;
+  box-sizing: border-box;
+  z-index: 5;
+  width: 100%;
+  font-weight: 700;
+}
+@media (max-width: 1024px) {
+  .layout-collapse-2 {
+    font-size: 16px;
+  }
+}
+.layout-collapse-2::after {
+  width: 32px;
+  height: 32px;
+  text-align: center;
+  transition: all 0.35s;
+}
+@media (max-width: 1024px) {
+  .layout-collapse-2::after {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.layout-content-collapse p {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 55px;
+  width: 100%;
+  font-weight: 400;
+  font-size: 18px;
+  padding: 10px;
+}
+@media (max-width: 1024px) {
+  .layout-content-collapse p {
+    font-size: 16px;
+    margin-bottom: 30px;
+  }
+}
+
+.layout-collapse-2 .layout-content-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s;
+  padding: 0 20px;
+  background-color: rgb(246, 246, 246);
+  border-radius: 5px;
+  list-style: none;
+}
+
+.layout-content-collapse{
+  background-color: #f6f6f6;
+}
+.layout-collapse-2 input:checked ~ .layout-content-collapse {
+  max-height: 10rem;
+  padding: 20px;
+}
+.layout-collapse-2 input:checked + .layout-collapse-2::after {
+  transform: rotate(-180deg);
+}
+
+.fa-chevron-up {
+  margin-left: 10px;
+}
