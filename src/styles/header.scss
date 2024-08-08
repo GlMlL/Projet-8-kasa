@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .header {
   display: flex;
   flex-direction: row;
@@ -6,6 +8,7 @@
   nav {
     ul {
       display: flex;
+      gap: 50px;
 
       a {
         text-decoration: none;
@@ -17,6 +20,9 @@
       li {
         margin: 0 10px;
         list-style: none;
+        font-family: Monserrat, sans-serif;
+        font-weight: 500;
+        font-size: 24px;
       }
     }
   }

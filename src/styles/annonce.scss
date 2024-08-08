@@ -1,3 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+body{
+  font-family: Monserrat, sans-serif;
+}
+
 .Annonce{
   width: 100%;
   height: 100%;
@@ -49,7 +54,7 @@
   cursor: pointer;
   padding: 12px;
   font-size: 18px;
-  border-radius: 7px;
+  border-radius: 13px;
   overflow: hidden;
   box-sizing: border-box;
   z-index: 5;
@@ -74,13 +79,56 @@
 }
 
 .chevron.down::before {
-  content: "\f078"; /* FontAwesome chevron down */
+  content: "\f054"; 
   font-family: FontAwesome;
 }
 
 .chevron.up::before {
-  content: "\f077"; /* FontAwesome chevron up */
+  content: "\f077"; 
   font-family: FontAwesome;
+}
+
+.location {
+  margin-top: 35px;
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+
+}
+
+.tag {
+  background-color: #FF6060; 
+  border-radius: 12px;       
+  padding: 5px 10px;        
+  color: white;            
+  display: inline-block;    
+  margin-right: 7px;              
+  font-size: 19px;          
+}
+
+.rating-section .rating .star {
+  font-size: 2.5em; 
+  display: inline-block;
+  border-radius: 50%; 
+  padding: 0.2em; 
+}
+
+.rating-section .rating .star.filled {
+  color: #FF6060; 
+}
+
+.rating-section .rating .star.empty {
+  color: rgba(227, 227, 227, 1); 
+}
+.collapse-box{
+  display: flex;
+  justify-content: space-between;
+  gap: 5em;
+  
 }
 
 .layout-content-collapse {
@@ -89,14 +137,14 @@
   transition: max-height 0.35s ease, padding 0.35s ease;
   padding: 0 20px;
   background-color: rgb(246, 246, 246);
-  border-radius: 5px;
+  border-radius: 13px;
   font-size: 18px;
 }
 
 .layout-content-collapse ul {
   padding: 0;
   margin: 0;
-  list-style-type: none; /* Remove bullet points */
+  list-style-type: none; 
 }
 
 .layout-content-collapse ul li {

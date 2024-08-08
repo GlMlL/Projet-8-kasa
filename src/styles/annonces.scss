@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 .logement-fiche{
   display: flex;
   flex-direction: row;
@@ -18,7 +20,8 @@
     position: absolute;
     bottom: 0;
     color: white;
-    font-size: 1rem;
+    font-family: Monserrat, sans-serif;
+    font-size: 0.9rem;
     height: 10%;
     width: 55%;
     border-radius: 0 0 20px 20px;

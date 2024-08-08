@@ -43,38 +43,42 @@ const Annonce = () => {
             <div className="location">
                 {annonce.location}
             </div>
-            <div className="tags">
-                {annonce.tags.map((tag, index) => (
-                    <span key={index} className="tag">
-                        {tag}
-                    </span>
-                ))}
-            </div>
-            <div className="rating-section">
-                <Rating value={annonce.rating} />
-            </div>
-            <div className="collapse_container">
-                <div className="layout-collapse-2" onClick={toggleDescription}>
-                    Description
-                    <span className={`chevron ${isDescriptionOpen ? 'up' : 'down'}`}></span>
+            <div className="flex">
+                <div className="tags">
+                    {annonce.tags.map((tag, index) => (
+                        <span key={index} className="tag">
+                            {tag}
+                        </span>
+                    ))}
                 </div>
-                <div className={`layout-content-collapse ${isDescriptionOpen ? 'open' : ''}`}>
-                    <p>{annonce.description}</p>
+                <div className="rating-section">
+                    <Rating value={annonce.rating} />
                 </div>
             </div>
-            <div className="collapse_container">
-                <div className="layout-collapse-2" onClick={toggleEquipments}>
-                    Équipements
-                    <span className={`chevron ${isEquipmentsOpen ? 'up' : 'down'}`}></span>
+            <div className="collapse-box">
+                <div className="collapse_container">
+                    <div className="layout-collapse-2" onClick={toggleDescription}>
+                        Description
+                        <span className={`chevron ${isDescriptionOpen ? 'up' : 'down'}`}></span>
+                    </div>
+                    <div className={`layout-content-collapse ${isDescriptionOpen ? 'open' : ''}`}>
+                        <p>{annonce.description}</p>
+                    </div>
                 </div>
-                <div className={`layout-content-collapse ${isEquipmentsOpen ? 'open' : ''}`}>
-                    <ul>
-                        {annonce.equipments.map((equipment, index) => (
-                            <li key={index}>{equipment}</li>
-                        ))}
-                    </ul>
+                <div className="collapse_container">
+                    <div className="layout-collapse-2" onClick={toggleEquipments}>
+                        Équipements
+                        <span className={`chevron ${isEquipmentsOpen ? 'up' : 'down'}`}></span>
+                    </div>
+                    <div className={`layout-content-collapse ${isEquipmentsOpen ? 'open' : ''}`}>
+                        <ul>
+                            {annonce.equipments.map((equipment, index) => (
+                                <li key={index}>{equipment}</li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </div>                   
         </div>
     );
 };
