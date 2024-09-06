@@ -1,43 +1,43 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
-import '../styles/carrousel.scss'; // Assurez-vous que ce chemin est correct
+import { faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+import '../styles/carrousel.scss';
 
 const Carrousel = ({ images }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
 
+    // Fonction pour passer à l'image précédente
     const prevSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === 0 ? images.length - 1 : prevIndex - 1));
+        const isFirstSlide = currentIndex === 0;
+        const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
+        setCurrentIndex(newIndex);
     };
 
+    // Fonction pour passer à l'image suivante
     const nextSlide = () => {
-        setCurrentIndex((prevIndex) => (prevIndex === images.length - 1 ? 0 : prevIndex + 1));
+        const isLastSlide = currentIndex === images.length - 1;
+        const newIndex = isLastSlide ? 0 : currentIndex + 1;
+        setCurrentIndex(newIndex);
     };
-
-    if (images.length === 0) {
-        return <p>No images available</p>; 
-    }
 
     return (
         <div className="carrousel">
-            <button className="prev" onClick={prevSlide}>
+            {/* Affichage de l'image actuelle */}
+            <img src={images[currentIndex]} alt={`Slide ${currentIndex}`} className="carrousel-image" />
+
+            {/* Bouton pour aller à l'image précédente avec un chevron gauche */}
+            <div className="left-arrow" onClick={prevSlide}>
                 <FontAwesomeIcon icon={faChevronLeft} />
-            </button>
-            <div className="carrousel-image-container" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-                {images.map((image, index) => (
-                    <img
-                        key={index}
-                        src={image}
-                        alt={`Slide ${index + 1}`}
-                        className={`carrousel-image ${currentIndex === index ? 'active' : ''}`}
-                    />
-                ))}
             </div>
-            <button className="next" onClick={nextSlide}>
+
+            {/* Bouton pour aller à l'image suivante avec un chevron droit */}
+            <div className="right-arrow" onClick={nextSlide}>
                 <FontAwesomeIcon icon={faChevronRight} />
-            </button>
-            <div className="carrousel-counter">
-                {currentIndex + 1}/{images.length}
+            </div>
+
+            {/* Affichage du numéro de la slide */}
+            <div className="slide-number">
+                {currentIndex + 1} / {images.length}
             </div>
         </div>
     );

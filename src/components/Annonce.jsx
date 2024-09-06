@@ -4,6 +4,8 @@ import annonces from "../data/annonces.json"; // J'importe les données des anno
 import '../styles/annonce.scss'; // J'importe les styles spécifiques pour ce composant
 import Rating from './Stars'; // J'importe le composant qui gère l'affichage des étoiles
 import Carrousel from './Carrousel'; // J'importe le carrousel pour afficher les images de l'annonce
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de Font Awesome
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'; // Importation des chevrons
 
 // Cette fonction cherche une annonce par son ID dans le fichier JSON
 const findAnnonceId = (id) => {
@@ -24,7 +26,7 @@ const Annonce = () => {
         }
     }, [annonce, navigate]); // Je surveille les changements d'annonce et de navigation
 
-    // Si l'annonce n'existe toujours pas après la vérification, je ne retourne rien (juste au cas où)
+    // Si l'annonce n'existe toujours pas après la vérification, je ne retourne rien
     if (!annonce) {
         return null;
     }
@@ -39,20 +41,31 @@ const Annonce = () => {
         setIsEquipmentsOpen(!isEquipmentsOpen);
     };
 
+    // Séparer le prénom et le nom de l'hôte
+    const [firstName, lastName] = annonce.host.name.split(' ');
+
     return (
         <div className="Annonce">
-    {/* J'affiche le carrousel d'images en passant uniquement les autres images, sans l'image de couverture */}
-    <Carrousel images={annonce.pictures} />
+            {/* J'affiche le carrousel d'images en passant uniquement les autres images, sans l'image de couverture */}
+            <Carrousel images={annonce.pictures} />
+
             {/* J'affiche le titre de l'annonce et le nom de l'hôte */}
             <div className="title">
-                {annonce.title} <span className="host-name">{annonce.host.name}</span>
+                <span className="announcement-title">{annonce.title}</span>
+                <span className="host-name">
+                    <span className="name-container">
+                        <span className="first-name">{firstName}</span>
+                        <span className="last-name">{lastName}</span>
+                    </span>
+                    <span className="host-circle"></span>
+                </span>
             </div>
-            
+
             {/* J'affiche la localisation de l'annonce */}
             <div className="location">
                 {annonce.location}
             </div>
-            
+
             <div className="flex">
                 {/* J'affiche les tags de l'annonce */}
                 <div className="tags">
@@ -62,31 +75,31 @@ const Annonce = () => {
                         </span>
                     ))}
                 </div>
-                
+
                 {/* J'affiche la note de l'annonce avec des étoiles */}
                 <div className="rating-section">
                     <Rating value={annonce.rating} />
                 </div>
             </div>
-            
+
             {/* J'affiche les sections déroulantes pour la description et les équipements */}
             <div className="collapse-box">
                 <div className="collapse_container">
                     {/* Section pour la description */}
                     <div className="layout-collapse-2" onClick={toggleDescription}>
                         Description
-                        <span className={`chevron ${isDescriptionOpen ? 'up' : 'down'}`}></span> {/* Je change l'icône en fonction de l'état */}
+                        <FontAwesomeIcon icon={isDescriptionOpen ? faChevronUp : faChevronDown} className="chevron" />
                     </div>
                     <div className={`layout-content-collapse ${isDescriptionOpen ? 'open' : ''}`}>
                         <p>{annonce.description}</p>
                     </div>
                 </div>
-                
+
                 <div className="collapse_container">
                     {/* Section pour les équipements */}
                     <div className="layout-collapse-2" onClick={toggleEquipments}>
                         Équipements
-                        <span className={`chevron ${isEquipmentsOpen ? 'up' : 'down'}`}></span> {/* Même logique pour les équipements */}
+                        <FontAwesomeIcon icon={isEquipmentsOpen ? faChevronUp : faChevronDown} className="chevron" />
                     </div>
                     <div className={`layout-content-collapse ${isEquipmentsOpen ? 'open' : ''}`}>
                         <ul>
@@ -96,7 +109,7 @@ const Annonce = () => {
                         </ul>
                     </div>
                 </div>
-            </div>                   
+            </div>
         </div>
     );
 };

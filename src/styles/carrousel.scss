@@ -1,54 +1,54 @@
-body{
-    margin: 50px;
-}
-
 .carrousel {
     position: relative;
     width: 100%;
-    overflow: hidden; 
-}
-
-.carrousel-image-container {
+    height: 500px; /* Ajustez la hauteur selon vos besoins */
     display: flex;
-    transition: transform 0.5s ease-in-out;
-    max-height: 650px;
-    width: 100%;
-    margin: 3.5rem 0;
-    
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 }
 
 .carrousel-image {
-    min-width: 100%; 
-    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Conserve les proportions de l'image */
     border-radius: 15px;
-    height: 500px;
 }
 
-.prev, .next {
+.left-arrow,
+.right-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    border: none;
     color: white;
+    border-radius: 50%;
     padding: 10px;
     cursor: pointer;
-    z-index: 10;
+    z-index: 2;
+    font-size: 44px; /* Taille des chevrons */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s ease;
 }
 
-.prev {
-    left: 10px;
+.left-arrow {
+    left: 10px; /* Positionne le chevron gauche */
 }
 
-.next {
-    right: 10px;
+.right-arrow {
+    right: 10px; /* Positionne le chevron droit */
 }
 
-.carrousel-counter {
+
+.slide-number {
     position: absolute;
-    bottom: 80px;
-    right: 50%;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
     color: white;
-    padding: 5px;
-    border-radius: 3px;
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 16px;
 }
