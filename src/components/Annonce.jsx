@@ -1,106 +1,108 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from "react-router-dom";
-import annonces from "../data/annonces.json"; // J'importe les données des annonces à partir du fichier JSON
-import '../styles/annonce.scss'; // J'importe les styles spécifiques pour ce composant
-import Rating from './Stars'; // J'importe le composant qui gère l'affichage des étoiles
-import Carrousel from './Carrousel'; // J'importe le carrousel pour afficher les images de l'annonce
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de Font Awesome
-import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'; // Importation des chevrons
+import { useParams, useNavigate } from "react-router-dom"; // Hooks pour récupérer les paramètres de l'URL et naviguer entre les routes
+import annonces from "../data/annonces.json"; // Importation des données des annonces depuis un fichier JSON
+import '../styles/annonce.scss'; // Importation des styles pour cette page spécifique
+import Rating from './Stars'; // Composant pour afficher les étoiles de notation
+import Carrousel from './Carrousel'; // Composant pour afficher un carrousel d'images
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; // Importation de Font Awesome pour les icônes
+import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons'; // Importation des icônes spécifiques pour les chevrons (flèches haut/bas)
 
-// Cette fonction cherche une annonce par son ID dans le fichier JSON
+// Fonction pour trouver une annonce spécifique par son ID
 const findAnnonceId = (id) => {
     return annonces.find((annonce) => annonce.id === id);
 }
 
 const Annonce = () => {
-    const { id } = useParams(); // J'extrais l'ID de l'annonce depuis l'URL
-    const navigate = useNavigate(); // J'utilise useNavigate pour rediriger si l'annonce n'est pas trouvée
-    const annonce = findAnnonceId(id); // Je récupère l'annonce correspondante à l'ID
+    const { id } = useParams(); // Récupération de l'ID de l'annonce depuis l'URL via les paramètres
+    const navigate = useNavigate(); // Hook pour rediriger l'utilisateur en cas de problème
+    const annonce = findAnnonceId(id); // Recherche de l'annonce dans les données en fonction de l'ID
+
+    // États locaux pour ouvrir/fermer la description et les équipements
     const [isDescriptionOpen, setIsDescriptionOpen] = useState(false); // État pour gérer l'ouverture/fermeture de la description
     const [isEquipmentsOpen, setIsEquipmentsOpen] = useState(false); // État pour gérer l'ouverture/fermeture des équipements
 
-    // Je vérifie si l'annonce existe, sinon je redirige vers une page d'erreur
+    // Utilisation de useEffect pour vérifier si l'annonce existe et rediriger si elle n'existe pas
     useEffect(() => {
-        if (!annonce) {
-            navigate('/error'); // Redirection vers la page d'erreur si l'annonce n'existe pas
+        if (!annonce) { // Si aucune annonce n'est trouvée
+            navigate('/error'); // Redirection vers la page d'erreur
         }
-    }, [annonce, navigate]); // Je surveille les changements d'annonce et de navigation
+    }, [annonce, navigate]); // Dépendances : useEffect se déclenche si l'annonce ou navigate changent
 
-    // Si l'annonce n'existe toujours pas après la vérification, je ne retourne rien
+    // Si l'annonce n'est pas trouvée, on retourne null (ne rien afficher)
     if (!annonce) {
         return null;
     }
 
-    // Fonction pour basculer l'état d'ouverture de la description
+    // Fonctions pour ouvrir/fermer les sections Description et Équipements
     const toggleDescription = () => {
-        setIsDescriptionOpen(!isDescriptionOpen);
+        setIsDescriptionOpen(!isDescriptionOpen); // Inverse l'état de la description (ouvert/fermé)
     };
 
-    // Fonction pour basculer l'état d'ouverture des équipements
     const toggleEquipments = () => {
-        setIsEquipmentsOpen(!isEquipmentsOpen);
+        setIsEquipmentsOpen(!isEquipmentsOpen); // Inverse l'état des équipements (ouvert/fermé)
     };
 
-    // Séparer le prénom et le nom de l'hôte
+    // Séparation du prénom et du nom de l'hôte (utilisé pour l'affichage plus bas)
     const [firstName, lastName] = annonce.host.name.split(' ');
 
     return (
         <div className="Annonce">
-            {/* J'affiche le carrousel d'images en passant uniquement les autres images, sans l'image de couverture */}
+            {/* Carrousel pour afficher les images de l'annonce */}
             <Carrousel images={annonce.pictures} />
 
-            {/* J'affiche le titre de l'annonce et le nom de l'hôte */}
-            <div className="title">
-                <span className="announcement-title">{annonce.title}</span>
-                <span className="host-name">
-                    <span className="name-container">
-                        <span className="first-name">{firstName}</span>
-                        <span className="last-name">{lastName}</span>
-                    </span>
-                    <span className="host-circle"></span>
-                </span>
-            </div>
+            <div className="info-container">
+                <div className="left-block">
+                    {/* Titre et localisation de l'annonce */}
+                    <div className="announcement-title">{annonce.title}</div>
+                    <div className="location">{annonce.location}</div>
 
-            {/* J'affiche la localisation de l'annonce */}
-            <div className="location">
-                {annonce.location}
-            </div>
-
-            <div className="flex">
-                {/* J'affiche les tags de l'annonce */}
-                <div className="tags">
-                    {annonce.tags.map((tag, index) => (
-                        <span key={index} className="tag">
-                            {tag}
-                        </span>
-                    ))}
+                    {/* Affichage des tags associés à l'annonce */}
+                    <div className="tags">
+                        {annonce.tags.map((tag, index) => (
+                            <span key={index} className="tag">{tag}</span>
+                        ))}
+                    </div>
                 </div>
 
-                {/* J'affiche la note de l'annonce avec des étoiles */}
-                <div className="rating-section">
-                    <Rating value={annonce.rating} />
+                <div className="right-block">
+                    <div className="host-info">
+                        {/* Informations sur l'hôte */}
+                        <div className="name-container">
+                            <span className="first-name">{firstName}</span>
+                            <span className="last-name">{lastName}</span>
+                        </div>
+                        {/* Affichage de l'image de l'hôte */}
+                        <img src={annonce.host.picture} alt="Host" className="host-picture" />
+                    </div>
+
+                    {/* Composant pour afficher la note sous forme d'étoiles */}
+                    <div className="rating-section">
+                        <Rating value={annonce.rating} />
+                    </div>
                 </div>
             </div>
 
-            {/* J'affiche les sections déroulantes pour la description et les équipements */}
+            {/* Section pour la description et les équipements avec effet d'ouverture/fermeture */}
             <div className="collapse-box">
                 <div className="collapse_container">
-                    {/* Section pour la description */}
+                    {/* Titre pour la section description avec un bouton pour ouvrir/fermer */}
                     <div className="layout-collapse-2" onClick={toggleDescription}>
                         Description
-                        <FontAwesomeIcon icon={isDescriptionOpen ? faChevronUp : faChevronDown} className="chevron" />
+                        <FontAwesomeIcon icon={isDescriptionOpen ? faChevronUp : faChevronDown} className={`chevron ${isDescriptionOpen ? 'up' : 'down'}`} />
                     </div>
+                    {/* Contenu de la description qui s'affiche ou se cache selon l'état */}
                     <div className={`layout-content-collapse ${isDescriptionOpen ? 'open' : ''}`}>
                         <p>{annonce.description}</p>
                     </div>
                 </div>
 
                 <div className="collapse_container">
-                    {/* Section pour les équipements */}
+                    {/* Titre pour la section équipements avec un bouton pour ouvrir/fermer */}
                     <div className="layout-collapse-2" onClick={toggleEquipments}>
                         Équipements
-                        <FontAwesomeIcon icon={isEquipmentsOpen ? faChevronUp : faChevronDown} className="chevron" />
+                        <FontAwesomeIcon icon={isEquipmentsOpen ? faChevronUp : faChevronDown} className={`chevron ${isEquipmentsOpen ? 'up' : 'down'}`} />
                     </div>
+                    {/* Liste des équipements qui s'affiche ou se cache selon l'état */}
                     <div className={`layout-content-collapse ${isEquipmentsOpen ? 'open' : ''}`}>
                         <ul>
                             {annonce.equipments.map((equipment, index) => (

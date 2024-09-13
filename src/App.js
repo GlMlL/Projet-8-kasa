@@ -6,18 +6,24 @@ import About from './pages/About';
 import Annonce from "./components/Annonce";
 import Error from './pages/Error';
 import {Footer} from "./components/Footer";
+import './styles/app.scss';
 
 function MyComponent() {
     return (
         <BrowserRouter>
-            <Header />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/about" element={<About />} />
-                <Route path="/annonce/:id" element={<Annonce />} />
-                <Route path="*" element={<Error />} />
-            </Routes>
-            <Footer />
+            <div id="content">
+                <Header/>
+
+                <main>
+                    <Routes>
+                        <Route path="/" element={<Home/>}/>
+                        <Route path="/about" element={<About/>}/>
+                        <Route path="/annonce/:id" element={<Annonce/>}/>
+                        <Route path="*" element={<Error/>}/>
+                    </Routes>
+                </main>
+            </div>
+            <Footer/>
         </BrowserRouter>
     );
 }

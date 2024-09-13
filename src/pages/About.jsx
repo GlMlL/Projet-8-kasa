@@ -1,4 +1,3 @@
-
 import React from 'react';
 import background from '../assets/images/Image-source-2.jpg';
 import Banner from '../components/Banner';
