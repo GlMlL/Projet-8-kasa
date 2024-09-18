@@ -1,7 +1,7 @@
 .carrousel {
     position: relative;
     width: 100%;
-    height: 500px; /* Ajustez la hauteur selon vos besoins */
+    height: 500px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,7 +11,7 @@
 .carrousel-image {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Conserve les proportions de l'image */
+    object-fit: cover;
     border-radius: 15px;
 }
 
@@ -25,7 +25,7 @@
     padding: 10px;
     cursor: pointer;
     z-index: 2;
-    font-size: 44px; /* Taille des chevrons */
+    font-size: 44px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,11 +33,11 @@
 }
 
 .left-arrow {
-    left: 10px; /* Positionne le chevron gauche */
+    left: 10px;
 }
 
 .right-arrow {
-    right: 10px; /* Positionne le chevron droit */
+    right: 10px;
 }
 
 

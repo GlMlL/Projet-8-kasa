@@ -10,7 +10,7 @@
     border-radius: 10px;
     overflow: hidden;
 
-    /* Utiliser un pseudo-élément pour appliquer le filtre */
+
     &::before {
       content: "";
       position: absolute;
@@ -23,17 +23,17 @@
       background-position: 80% 50%;
       background-repeat: no-repeat;
 
-      /* Appliquer le filtre uniquement sur l'arrière-plan */
+
       filter: brightness(50%);
-      z-index: 1; /* Placer en dessous du texte */
+      z-index: 1;
     }
 
-    /* Utilisation de Flexbox pour centrer le h1 */
+
     display: flex;
     justify-content: center;
     align-items: center;
 
-    /* S'assurer que le texte est au-dessus du filtre */
+
     z-index: 2;
     position: relative;
 
@@ -46,7 +46,7 @@
       color: white;
       font-size: 2rem;
       text-align: center;
-      z-index: 3; /* Toujours s'assurer que le h1 est au-dessus */
+      z-index: 3;
     }
   }
 }

@@ -69,10 +69,10 @@ $primary-color: rgba(255, 96, 96, 1);
   .tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 7px; // Ajouter un petit espace entre les tags
+    gap: 7px;
 
     .tag {
-      background-color: $primary-color; // Utilisation de la couleur principale pour les tags
+      background-color: $primary-color;
       border-radius: 12px;
       padding: 5px 10px;
       color: white;
@@ -95,7 +95,7 @@ $primary-color: rgba(255, 96, 96, 1);
     display: flex;
     align-items: center;
     margin-bottom: 12px;
-    color: $primary-color; // Couleur principale pour le texte de l'hôte
+    color: $primary-color;
 
     .name-container {
       display: flex;
@@ -105,28 +105,28 @@ $primary-color: rgba(255, 96, 96, 1);
       text-align: right;
 
       .first-name, .last-name {
-        color: $primary-color; // Couleur principale pour le prénom et le nom
+        color: $primary-color;
       }
     }
 
     .host-picture {
-      width: 50px; // Ajuster la taille de l'image
-      height: 50px; // Ajuster la taille de l'image
-      border-radius: 50%; // Transformation en cercle
-      object-fit: cover; // Pour s'assurer que l'image couvre correctement le cercle
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
     }
   }
 
   .rating-section {
     display: flex;
     align-items: center;
-    color: $primary-color; // Couleur principale pour les étoiles
+    color: $primary-color;
   }
 
   .rating {
     display: flex;
     align-items: center;
-    color: $primary-color; // Couleur principale pour les étoiles
+    color: $primary-color;
   }
 
   .star {
@@ -134,12 +134,12 @@ $primary-color: rgba(255, 96, 96, 1);
     display: inline-block;
     padding: 0.2em;
     border-radius: 50%;
-    color: $primary-color; // Couleur principale pour les étoiles
+    color: $primary-color;
     transition: color 0.2s ease-in-out;
   }
 
   .star-active {
-    color: $primary-color; // Couleur principale pour les étoiles actives
+    color: $primary-color;
   }
 }
 
