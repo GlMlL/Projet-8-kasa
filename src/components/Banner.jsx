@@ -24,6 +24,6 @@ export default function Banner({ background, caption }) {
 
 
 Banner.propTypes = {
-    background: PropTypes.any,
-    caption: PropTypes.string,
+    background: PropTypes.any, // Validation que background peut être de n'importe quel type
+    caption: PropTypes.string, // Validation que caption doit être une chaîne de caractères
 }
